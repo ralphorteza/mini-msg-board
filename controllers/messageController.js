@@ -2,9 +2,15 @@ const { body, validationResult } = require("express-validator");
 const Message = require("../models/message");
 const asyncHandler = require("express-async-handler");
 
-exports.message_create_get = (req, res, next) => {
-  res.render("form", { title: "New Message"});
-};
+// Displays all of the messages.
+exports.message_list = asyncHandler(async (req, res, next) => {
+  res.send("NOT IMPLEMENTED: message list");
+});
+
+// Display Message create form on GET.
+exports.message_create_get = asyncHandler(async (req, res, next) => {
+  res.send("NOT IMPLEMENTED: Message create GET");
+});
 
 exports.message_create_post = [
   // Validate and sanitize fields.
