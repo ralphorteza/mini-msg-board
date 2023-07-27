@@ -1,0 +1,12 @@
+extends layout 
+
+block content 
+  h1= title 
+  ul 
+    each message in messages 
+      div 
+        h4 #{message.text}
+        p #{message.user}
+        p #{message.date}
+    else 
+      li There are no messages. 

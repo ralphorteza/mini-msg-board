@@ -4,7 +4,14 @@ const asyncHandler = require("express-async-handler");
 
 // Displays all of the messages.
 exports.message_list = asyncHandler(async (req, res, next) => {
-  res.send("NOT IMPLEMENTED: message list");
+  const allMessages = await Message.find().sort({ date: 1}).exec();
+  res.render(
+    "message_list",
+    {
+      title: "mini-message board",
+      messages: allMessages,
+    }
+  );
 });
 
 // Display Message create form on GET.

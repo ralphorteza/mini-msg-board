@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 const MessageSchema = new Schema({
   text: { type: String, required: true, maxLength: 250},
   user: { type: String, required: true, maxLength: 15},
-  timestamp: { type: Date },
+  date: { type: Date },
 });
 
 MessageSchema.virtual("url").get(function () {
