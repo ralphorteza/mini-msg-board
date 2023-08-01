@@ -3,6 +3,24 @@ extends layout
 block content
   h1= title
   
-  //- form(method='POST' action='')
+  form(method='POST' action='')
+    div.form-group 
+      label(for='user') Username:
+      input#user.form-control(
+        type='text' 
+        name='user' 
+        required='true'
+        value=(undefined===message ? '' : message.user)
+      )
+      br
+      label(for='text') Message:
+      input#text.form-control(
+        type='text'
+        name='text'
+        required='true'
+        value=(undefined===message ? '' : message.text)
+      )
+      br
+      button.btn.btn-primary(type='submit') Submit
 
 

@@ -16,7 +16,8 @@ exports.message_list = asyncHandler(async (req, res, next) => {
 
 // Display Message create form on GET.
 exports.message_create_get = asyncHandler(async (req, res, next) => {
-  res.send("NOT IMPLEMENTED: Message create GET");
+  // res.send("NOT IMPLEMENTED: Message create GET");
+  res.render("form", { title: "New Message"});
 });
 
 exports.message_create_post = [
@@ -37,12 +38,12 @@ exports.message_create_post = [
   asyncHandler(async (req, res, next) => {
     // Extract the validation errors from a request.
     const errors = validationResult(req);
-
+    const date = new Date();
     // Create Author object with escaped and trimmed data.
     const message = new Message({
       user: req.body.user,
       text: req.body.text,
-      timestamp: req.body.timestamp, //may be incorrect
+      date: date,
     });
 
     if (!errors.isEmpty()) {
@@ -54,12 +55,9 @@ exports.message_create_post = [
       });
       return;
     } else {
-      // Data from form is valid.
-
-      // Save author.
+      // Data from form is valid; save message and redirect to homepage.
       await message.save();
-      // Redirect to new author record.
-      res.redirect(message.url);
+      res.redirect('/');
     }
   }),
 ];
