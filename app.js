@@ -8,10 +8,10 @@ var indexRouter = require('./routes/index');
 
 var app = express();
 
-// Set up mongoose connection
+// Set up mongoose connection, add url upon deployment.
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
-const mongoDB = "mongodb+srv://libraryadmin:qiT9mPy6PnfRGQzf@cluster0.mwd6uuv.mongodb.net/message_board?retryWrites=true&w=majority";
+const mongoDB = "";
 
 main().catch((err) => console.log(err));
 async function main() {
